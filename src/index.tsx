@@ -35,7 +35,7 @@ const SolidjsMarkdown: ParentComponent<Partial<SolidMarkdownProps>> = (props) =>
       .use(remarkParse)
       .use(props.remarkPlugins || [])
       .use(remarkRehype, { allowDangerousHtml: true })
-      .use(props.rehypePlugins || []) as Processor<Root, Root, Root, void>
+      .use(props.rehypePlugins || []) as Processor<Root, Root, Root>
 
     const file = new VFile()
 

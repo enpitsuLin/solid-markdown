@@ -16,6 +16,9 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     test: {
+      coverage: {
+        provider: "v8"
+      },
       watch: false,
       isolate: !testSSR,
       env: {
@@ -28,12 +31,12 @@ export default defineConfig(({ mode }) => {
       transformMode: { web: [/\.[jt]sx$/] },
       ...(testSSR
         ? {
-            include: ['test/server.spec.{ts,tsx}'],
-          }
+          include: ['test/server.spec.{ts,tsx}'],
+        }
         : {
-            include: ['test/*.spec.{ts,tsx}'],
-            exclude: ['test/server.spec.{ts,tsx}'],
-          }),
+          include: ['test/*.spec.{ts,tsx}'],
+          exclude: ['test/server.spec.{ts,tsx}'],
+        }),
     },
     resolve: {
       conditions: testSSR ? ['node'] : ['browser', 'development'],
